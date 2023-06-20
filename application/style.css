@@ -1,0 +1,65 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F5F7FA; /* Light gray background */
+  color: #333; /* Dark gray text color */
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #4A90E2; /* Blue heading color */
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.form-label {
+  color: #555; /* Dark gray form label color */
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 100%;
+  height: 40px;
+  padding: 5px 10px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #DDD;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box; /* Added property */
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #4A90E2; /* Blue border color on focus */
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #4A90E2; /* Blue button background */
+  color: #FFF; /* White button text color */
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #357AE8; /* Darker blue button background on hover */
+}
+
+p#result {
+  text-align: center;
+  margin-top: 20px;
+}
