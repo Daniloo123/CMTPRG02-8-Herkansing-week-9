@@ -9,4 +9,4 @@ De eerste json file zit vol met alle beschikbare data, hier wordt gebruikt gemaa
 De 2e json file is echter gefilterd omdat er te veel underweigth data in zat.
 
 Hieronder de website waar de site beschikbaar is
-https://daniloo123.github.io/CMTPRG02-8-Herkansing-week-9/application/index.html
+https://daniloo123.github.io/CMTPRG02-8-Herkansing1/Week%209/application/index.html
