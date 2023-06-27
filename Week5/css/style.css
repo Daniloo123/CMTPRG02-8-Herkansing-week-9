@@ -1,0 +1,42 @@
+
+ body {
+     font-family: Arial, sans-serif;
+     margin: 0;
+     padding: 20px;
+     text-align: center;
+ }
+
+h1 {
+    margin-top: 40px;
+}
+
+.btn-container {
+    margin-top: 20px;
+}
+
+#container {
+    margin-top: 40px;
+}
+
+#output {
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+#array {
+    background-color: rgb(36, 32, 65);
+    color: white;
+    font-family: monospace;
+    min-height: 20px;
+    width: 720px;
+    word-wrap: break-word;
+}
+
+video {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    display: none;
+    width: auto;
+    height: auto;
+}
