@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="app.js" type="module"></script>
+    <title>Diabetes Voorspelling</title>
+  </head>
+  <body>
+    <h1>Diabetes Voorspelling</h1>
+    <div class="container">
+      <form>
+        <div class="mb-3">
+          <label for="glucose" class="form-label">Glucose:</label>
+          <input type="number" id="glucose" name="glucose" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="bloodpressure" class="form-label">Bloeddruk:</label>
+          <input type="number" id="bloodpressure" name="bloodpressure" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="skin_thickness" class="form-label">Huid Dikte:</label>
+          <input type="number" id="skin_thickness" name="skin_thickness" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="insulin" class="form-label">Insuline:</label>
+          <input type="number" id="insulin" name="insulin" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="bmi" class="form-label">Body Mass Index:</label>
+          <input type="number" id="bmi" name="bmi" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="age" class="form-label">Leeftijd:</label>
+          <input type="number" id="age" name="age" class="form-control" required>
+        </div>
+
+        <button id="sbmt"  class="btn btn-primary">Voorspellen</button>
+      </form>
+    </div>
+    <h1 id="result">RESULT</h1>
+
+    <script type="module">
+      import { DecisionTree } from "./libraries/decisiontree.js";
+
+      function loadSavedModel() {
+        return fetch("./model.json")
+          .then((response) => response.json())
+          .then((model) => new DecisionTree(model));
+      }
+
+      let form = document.querySelector('form');
+      let result = document.querySelector('#result');
+
+     
+
+        // let glucose = Number(document.querySelector('#glucose').value);
+        // let bloodpressure = Number(document.querySelector('#bloodpressure').value);
+        // let skinthickness = Number(document.querySelector('#skin_thickness').value);
+        // let insulin = Number(document.querySelector('#insulin').value);
+        // let bmi = Number(document.querySelector('#bmi').value);
+        // let diabetespedigreefunction = Number(document.querySelector('#diabetespedigreefunction').value);
+        // let age = Number(document.querySelector('#age').value);
+
+
+
+     ///jwuery
+     $("#sbmt").click(function(){
+      let glucose= $("#glucose").val()
+      let bloodpressure= $("#bloodpressure").val()
+      let skinthickness= $("#skin_thickness").val()
+      let insulin= $("#insulin").val()
+      let bmi= $("#bmi").val()
+      let diabetespedigreefunction= $("#diabetespedigreefunction").val()
+      let age= $("#age").val()
+
+      loadSavedModel().then((decisionTree) => {
+          let sample = {
+            Glucose: glucose,
+            bloeddruk: bloodpressure,
+            HuidDikte: skinthickness,
+            Insuline: insulin,
+            BMI: bmi,
+            DiabetesErfelijkheidsfunctie: diabetespedigreefunction,
+            Leeftijd: age
+          };
+          let prediction = decisionTree.predict(sample);
+          $("#prediction").html(prediction)
+          
+          //result.textContent = `De voorspelling is ${prediction == 1 ? 'diabetes' : 'geen diabetes'}.`;
+        });
+     })
+
+
+     //jquery
+
+      
+    
+    </script>
+  </body>
+</html>
+
+
+
+
+
+<!-- andere form -->
+
+<!-- <div class="container">
+  <form>
+    <div class="form-group">
+      <label for="glucose">Glucose:</label>
+      <input type="number" class="form-control" id="glucose" placeholder="Glucose">
+    </div>
+    <div class="form-group">
+      <label for="bloodpressure">Bloeddruk:</label>
+      <input type="number" class="form-control" id="bloodpressure" placeholder="Bloeddruk">
+    </div>
+
+    <div class="form-group">
+      <label for="skin_thickness">Huid Dikte:</label>
+      <input type="number" class="form-control" id="skin_thickness" placeholder="Huid Dikte">
+    </div>
+
+    <div class="form-group">
+      <label for="insulin">Insuline:</label>
+      <input type="number" class="form-control" id="insulin" placeholder="Insulin">
+    </div>
+
+    <div class="form-group">
+      <label for="bmi">Body Mass Index:</label>
+      <input type="number" class="form-control" id="bmi" placeholder="Body Mass Index">
+    </div>
+
+    <div class="form-group">
+      <label for="age">Leeftijd:</label>
+      <input type="number" class="form-control" id="age" placeholder="Leeftijd">
+    </div>
+    <button type="submit" class="btn btn-primary w-100  ">Submit</button>
+  </form>
+</div> -->
+
+
